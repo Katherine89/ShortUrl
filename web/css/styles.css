@@ -1,0 +1,14 @@
+/* Custom */
+body {
+    background-color: rgb(235, 235, 235);
+}
+
+.card img {
+    width: 230px;
+    padding: 20px;
+}
+
+.td-truncate {
+    display: inline-block;
+    max-width: 32rem;
+}
