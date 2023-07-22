@@ -45,7 +45,7 @@ ShortUrlRouter.post('/gen', async (req, res) => {
         console.log(url, fullUrl, await dbContext.getUrlCount());
     }
     catch (err) {
-        res.status(400).end(err);
+        res.status(400).end(err.message);
     }
 });
 //#endregion

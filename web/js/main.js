@@ -62,7 +62,8 @@ function generateShortUrl(url) {
         })
         .catch((error) => {
             setShortUrlInfo();
-            alert(error.response.statusText);
+            const res = error.response;
+            alert(`${res.status} ${res.statusText}\n\n ${res.data}`);
         })
         .finally(() => btnShorten.classList.remove("disabled"));
 }
