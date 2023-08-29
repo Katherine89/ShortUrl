@@ -19,6 +19,11 @@ export default class UrlDbContext {
         }
     }
 
+    async findUrlByFullUrl(fullUrl) {
+        const query = await this.#db.get(`SELECT \`url\` FROM short_urls WHERE \`full_url\` = '${fullUrl}';`);
+        return query ? query['url'] : null;
+    }
+
     async getUrlCount() {
         const query = await this.#db.get(`SELECT COUNT(url) AS \`count\` FROM \`short_urls\`;`);
         return query ? query['count'] : null;

@@ -37,8 +37,11 @@ ShortUrlRouter.post('/gen', async (req, res) => {
         const fullUrl = req.body['full_url'];
         if (!(isValidStr(fullUrl) && isValidUrl(fullUrl))) throw new Error('Invalid URL !');
 
-        const url = await getUniqueUrl();
-        await dbContext.setUrl(url, fullUrl);
+        let url = await dbContext.findUrlByFullUrl(fullUrl);
+        if (!url) {
+            url = await getUniqueUrl();
+            await dbContext.setUrl(url, fullUrl);
+        }
         res.send({ "url": url });
 
         await tryDeleteInvalidUrls();
