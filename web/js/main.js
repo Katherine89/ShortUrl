@@ -15,7 +15,9 @@ function setShortUrlRecords(records) {
             </tr>
         `;
     }
-    tbodyUrlRecord.innerHTML = html;
+    if(tbodyUrlRecord) {
+        tbodyUrlRecord.innerHTML = html;
+    }
 }
 
 function setShortUrlInfo() {
